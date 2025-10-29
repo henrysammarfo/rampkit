@@ -1,81 +1,142 @@
-# RampKit - Compliant Stablecoin On/Off-Ramp Infrastructure
+# RampKit
 
-**Road to Buenos Aires 2025 Submission**
+Compliant stablecoin on/off-ramp infrastructure for fintech developers. RampKit provides a developer-first API with built‑in KYC/AML to help companies move between fiat and stablecoins at a fraction of traditional remittance costs.
 
-RampKit is a developer-first API infrastructure for compliant stablecoin on/off-ramps targeting Latin American fintech companies. We're solving the 6.5% remittance fee problem with built-in KYC/AML compliance.
+## Overview
 
-## Quick Links
-- **Live Demo**: [rampkit.vercel.app](https://rampkit.vercel.app)
-- **API Docs**: [rampkit.vercel.app/rampkit/docs](https://rampkit.vercel.app/rampkit/docs)
-- **Pitch Deck**: See `PITCH_DECK_CONTENT.md`
-- **Business Model**: See `BUSINESS_MODEL.md`
-- **Discovery Plan**: See `DISCOVERY_PLAN.md`
+- **Problem**: Cross‑border payments remain slow and expensive (average global remittance fees ≈ 6.5%). Compliance (KYC/AML) adds complexity and delays for fintech builders.
+- **Solution**: A compliance‑first API and reference implementation enabling fiat ↔ stablecoin flows with automated KYC/AML checks, webhooks, and sandbox testing.
+- **Who it’s for**: B2B fintech developers, wallets, neo‑banks, and payment companies in LATAM and beyond.
 
-## Project Structure
+## Live Resources
 
-\`\`\`
+- **Live Demo**: [`rampkit.vercel.app`](https://rampkit.vercel.app)
+- **API Docs**: [`rampkit.vercel.app/rampkit/docs`](https://rampkit.vercel.app/rampkit/docs)
+- **Business Model**: see `BUSINESS_MODEL.md`
+- **Discovery Plan**: see `DISCOVERY_PLAN.md`
+- **Pitch Deck Content**: see `PITCH_DECK_CONTENT.md`
+
+## Repository Structure
+
+```
 rampkit/
 ├── app/
-│   ├── rampkit/
-│   │   ├── page.tsx              # Landing page
-│   │   └── docs/
-│   │       └── page.tsx          # API documentation
+│   ├── page.tsx                   # Redirects to /rampkit
+│   ├── layout.tsx                 # App shell, analytics, fonts
+│   ├── globals.css                # Tailwind v4 + theme tokens
 │   ├── api/
-│   │   ├── waitlist/
-│   │   │   └── route.ts          # Waitlist signup endpoint
-│   │   ├── transactions/
-│   │   │   └── route.ts          # Transaction processing
-│   │   └── compliance/
-│   │       └── route.ts          # KYC/AML verification
-│   ├── layout.tsx
-│   ├── page.tsx                  # Redirects to /rampkit
-│   └── globals.css
-├── lib/
-│   ├── supabase.ts               # Supabase client setup
-│   └── compliance.ts             # Compliance logic
+│   │   ├── waitlist/route.ts      # Waitlist signup (Supabase insert)
+│   │   ├── transactions/route.ts  # Transaction stub (demo)
+│   │   └── compliance/route.ts    # KYC/AML stub (demo)
+│   └── rampkit/
+│       ├── page.tsx               # Marketing/landing page with waitlist
+│       └── docs/page.tsx          # Interactive API documentation
+├── components/                    # UI primitives (shadcn/Radix)
+├── hooks/                         # `use-toast`, `use-mobile`
+├── lib/                           # Utilities (e.g., `cn`)
 ├── scripts/
-│   ├── create-waitlist-table.sql # Database schema
-│   └── seed-data.sql             # Sample data
-├── SETUP.md                      # Supabase setup guide
-├── SUBMISSION_CHECKLIST.md       # Complete submission guide
-├── PITCH_DECK_CONTENT.md         # Slide-by-slide content
-├── GITHUB_SETUP.md               # GitHub repo creation
-├── BUSINESS_MODEL.md             # Revenue & GTM
-├── DISCOVERY_PLAN.md             # 90-day validation
-├── FOUNDER_BIO_TEMPLATE.md       # Team information
-└── CLAUDE_AI_PROMPTS.md          # AI helper prompts
-\`\`\`
+│   └── create-waitlist-table.sql  # Supabase schema for waitlist
+├── styles/                        # Global styles (if applicable)
+├── SETUP.md                       # Local + prod setup
+├── QUICK_START.md                 # Short guide
+├── SUBMISSION_CHECKLIST.md        # Competition checklist
+├── BUSINESS_MODEL.md              # Revenue & GTM
+├── DISCOVERY_PLAN.md              # 90‑day validation plan
+├── TEAM.md                        # Founder bios
+└── TRAVEL_PLAN.md                 # Event attendance
+```
 
-## Submission Requirements Met
+## Architecture
 
-✅ **Clear Problem Framing** - 6.5% remittance fees, compliance barriers, developer friction  
-✅ **Credible Market Timing** - $300B stablecoin market, 75% YoY growth, major companies integrating  
-✅ **Defensible Approach** - Compliance-first architecture, multi-currency support, developer SDK  
-✅ **Early Signals of Demand** - Waitlist system, discovery plan, market research  
-✅ **Realistic GTM** - Phased rollout: pilots → paid customers → scale  
+- **Frontend**: Next.js App Router, React 19, Tailwind CSS 4, shadcn/Radix UI.
+- **APIs**: Next.js Route Handlers under `app/api/*`.
+- **Data**: Supabase (PostgreSQL) for waitlist capture.
+- **Analytics**: Vercel Analytics.
+- **Hosting**: Vercel.
+
+### API Overview (current demo)
+
+- `POST /api/waitlist`
+  - Body: `{ email }`
+  - Behavior: Validates and inserts into `waitlist`. Duplicate emails return a friendly success message.
+
+- `POST /api/transactions` (stub)
+  - Body: `{ amount, currency, stablecoin, wallet_address }`
+  - Returns: Mock transaction object with a 0.5% fee and pending status.
+
+- `GET /api/transactions?id=...` (stub)
+  - Returns: Mock completed transaction data.
+
+- `POST /api/compliance` (stub)
+  - Body: `{ user_id, document_type, document_image? }`
+  - Returns: Mock approved KYC verification.
+
+- `GET /api/compliance?user_id=...` (stub)
+  - Returns: Mock verified KYC status.
 
 ## Getting Started
 
-**Quick Start:** See `QUICK_START.md` for step-by-step setup instructions.
+See `SETUP.md` or the condensed `QUICK_START.md`. Summary:
 
-1. **Setup Environment** - `.env.local` configured with Supabase credentials
-2. **Install Dependencies** - `npm install --legacy-peer-deps`
-3. **Create Database** - Run SQL from `scripts/create-waitlist-table.sql` in Supabase
-4. **Test Locally** - `npm run dev` and test at http://localhost:3000
-5. **Complete Docs** - Fill in `TEAM.md` and `TRAVEL_PLAN.md`
-6. **Deploy** - Follow `GITHUB_SETUP.md` to deploy to Vercel
-7. **Submit** - Use `SUBMISSION_CHECKLIST.md` as final guide
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Create `.env.local` with Supabase credentials:
+   ```bash
+   NEXT_PUBLIC_SUPABASE_URL=your_project_url
+   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+   ```
+3. Create the database table (in Supabase SQL editor):
+   - Open `scripts/create-waitlist-table.sql` and run it.
+4. Start the dev server and open `http://localhost:3000`:
+   ```bash
+   npm run dev
+   ```
+5. Test the waitlist form at `/rampkit` and confirm inserts in Supabase.
 
-## Key Metrics
+### Environment Variables
 
-- **Market Size**: $300B stablecoin market (2025)
-- **TAM**: $46T annual stablecoin transactions
-- **Problem**: 6.5% average remittance fees globally
-- **Solution**: 0.5% fees + compliance built-in
-- **GTM**: B2B fintech developers in LatAm first
+- `NEXT_PUBLIC_SUPABASE_URL`: Supabase project URL.
+- `SUPABASE_SERVICE_ROLE_KEY`: Service role key (server‑side only).
+
+### Deployment (Vercel)
+
+1. Push the repository to GitHub.
+2. Import into Vercel and deploy.
+3. Add the environment variables in Vercel Project Settings.
+4. Redeploy to apply env vars.
+
+## Security Notes
+
+- The service role key is used only in server‑side Route Handlers. Never expose it on the client.
+- Enable RLS on `waitlist` (policy included in SQL script). Review and harden for production environments.
+
+## Roadmap (abridged)
+
+- Replace demo stubs with production integrations for deposits/withdrawals.
+- Add webhook delivery and signing.
+- Provide official SDKs (TypeScript/Python) and Postman collection.
+- Expand compliance checks and reporting.
+- Add operator network routing and best‑rate quoting.
+
+## Tech Stack
+
+- Next.js 16, React 19, TypeScript
+- Tailwind CSS 4, Radix UI, shadcn/ui
+- Supabase (PostgreSQL)
+- Vercel (hosting & analytics)
+
+## Contributing
+
+Contributions are welcome. Please open an issue to discuss proposed changes before submitting a PR.
+
+## License
+
+This project is licensed under the MIT License. See `LICENSE` for details.
 
 ## Contact
 
-[Your Name] - Founder  
-[Your Email]  
-[Your LinkedIn]
+- Founder: [Your Name]
+- Email: [your@email]
+- LinkedIn: [your‑linkedin]
