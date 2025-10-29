@@ -26,3 +26,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# internal docs to keep private
+CLAUDE_AI_PROMPTS.md
+SUBMISSION_CHECKLIST.md
