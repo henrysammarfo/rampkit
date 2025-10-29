@@ -1,43 +1,20 @@
-# Team
+**The Team**
 
-## [Your Name]
-**Role:** Co-founder & CEO
+**Henry (Sam) Marfo - Co-Founder & Lead Developer**
+- Computer Science student at Accra Technical University with 2+ years blockchain development
+- Expertise in multi-chain applications, compliance systems, and fintech APIs
+- Previous experience building Web3 infrastructure across multiple verticals
+- Deep understanding of emerging market payment challenges and opportunities
 
-**Background:**
-- [Previous company/role - e.g., "Former Software Engineer at [Company]"]
-- [Key achievement - e.g., "Built payment infrastructure serving 100K+ users"]
-- [Relevant expertise - e.g., "5 years in fintech and blockchain development"]
-- [Education - e.g., "BS Computer Science, [University]"]
+**Godrich Armah - Co-Founder & Technical Partner**
+- Computer Science student with blockchain and smart contract expertise
+- Focus on system architecture, security, and production deployments
+- Collaborative development experience in high-velocity environments
+- Shared commitment to solving real-world financial inclusion problems
 
-**LinkedIn:** [Your LinkedIn URL]  
-**Email:** [Your Email]
+**Student Entrepreneur Advantages**:
+- Unlimited time and energy to focus exclusively on RampKit's success
+- Fresh perspectives on fintech challenges unconstrained by industry conventions
+- Direct understanding of emerging market payment needs
+- Cost-effective development approach maximizing runway and growth potential
 
----
-
-## [Co-founder Name] (Optional)
-**Role:** Co-founder & CTO
-
-**Background:**
-- [Previous company/role]
-- [Key achievement]
-- [Relevant expertise]
-- [Education]
-
-**LinkedIn:** [Their LinkedIn URL]  
-**Email:** [Their Email]
-
----
-
-## Why We're Building This
-
-We've experienced firsthand the pain of high remittance fees and compliance complexity in cross-border payments. RampKit combines our expertise in fintech infrastructure and regulatory compliance to solve this problem for the next generation of global fintech companies.
-
----
-
-## Instructions
-
-1. Replace all `[Your Name]` and `[Co-founder Name]` placeholders with actual information
-2. Fill in your professional backgrounds, highlighting relevant experience
-3. Add LinkedIn URLs and contact information
-4. Update the "Why We're Building This" section with your personal motivation
-5. If solo founder, remove the second founder section
